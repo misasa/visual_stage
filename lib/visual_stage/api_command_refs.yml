@@ -1,0 +1,229 @@
+---
+:File:
+- - FILE_NEW
+  - Base path(MAX 260char),User Folder(MAX 260char),Save flag(YES or NO)
+  - ''
+- - FILE_OPEN
+  - Base path(MAX 260char),User Folder(MAX 260char),Save flag(YES or NO)
+  - ''
+- - FILE_SAVE
+  - ''
+  - ''
+- - FILE_CLOSE
+  - Save flag(YES or NO)
+  - ''
+- - FILE_IMPORT
+  - File path && name(MAX 260char)
+  - ''
+- - FILE_EXPORT
+  - File path && name(MAX 260char)
+  - ''
+:Control:
+- - CONTROL_CONNECT
+  - ''
+  - ''
+- - CONTROL_UNCONNECT
+  - ''
+  - ''
+- - CONTROL_BLC
+  - Enable flag(TRUE ot FALSE)
+  - ''
+- - CONTROL_MOVE_STAGE
+  - World X(um),World Y(um)
+  - ''
+- - CONTROL_STOP_STAGE
+  - ''
+  - ''
+- - GET_STAGE_POSITION
+  - ''
+  - World X(um),World Y(um)
+- - GET_MARKER_POSITION
+  - ''
+  - Type(POINT or RECT), World X1(um),World Y1(um)[, World X2(um),World Y2(um)]
+- - SET_MARKER_POSITION
+  - Type(POINT or RECT), World X1(um),World Y1(um)[, World X2(um),World Y2(um)]
+  - ''
+- - CHG_WORLD_TO_STAGE
+  - World X(um),World Y(um)
+  - Stage X(um),Stage Y(um)
+- - CHG_WORLD_TO_DEVICE
+  - World X(um),World Y(um)
+  - Device X(pulse),Device Y(pulse)
+- - CHG_STAGE_TO_WORLD
+  - Stage X(um),Stage Y(um)
+  - World X(um),World Y(um)
+- - CHG_STAGE_TO_DEVICE
+  - Stage X(um),Stage Y(um)
+  - Device X(pulse),Device Y(pulse)
+- - CHG_DEVICE_TO_WORLD
+  - Device X(pulse),Device Y(pulse)
+  - World X(um),World Y(um)
+- - CHG_DEVICE_TO_STAGE
+  - Device X(pulse),Device Y(pulse)
+  - Stage X(um),Stage Y(um)
+:Edit_Default_parameter:
+- - GET_DEF_ADDRESS_CLAS
+  - ''
+  - Class(0 to 99)
+- - GET_DEF_ADDRESS_NAME
+  - ''
+  - name(MAX 20char)
+- - GET_DEF_ADDRESS_DATA
+  - ''
+  - Data(MAX 20000char)
+- - GET_DEF_ATTACH_NAME
+  - ''
+  - name(MAX 20char)
+- - GET_DEF_ATTACH_IMAG
+  - ''
+  - Image magnification(1 to)
+- - SET_DEF_ADDRESS_CLAS
+  - Class(0 to 99)
+  - ''
+- - SET_DEF_ADDRESS_NAME
+  - name(MAX 20char)
+  - ''
+- - SET_DEF_ADDRESS_DATA
+  - Data(MAX 20000char)
+  - ''
+- - SET_DEF_ATTACH_NAME
+  - name(MAX 20char)
+  - ''
+- - SET_DEF_ATTACH_IMAG
+  - Image magnification(1 to)
+  - ''
+:Edit_Address:
+- - GET_ADDRESS_COUNT
+  - ''
+  - Count(0 to 10000)
+- - ADD_ADDRESS
+  - ''
+  - Add number(0 to 9999)
+- - SET_SELECT_ADDRESS
+  - Number(0 to 9999)
+  - ''
+- - GET_SELECT_ADDRESS
+  - ''
+  - Number(-1 or 0 to 9999)
+- - GET_ADDRESS_CLASS
+  - ''
+  - Class(0 to 99)
+- - GET_ADDRESS_NAME
+  - ''
+  - Name(MAX 20char)
+- - GET_ADDRESS_LOCATE
+  - ''
+  - World X(um),World Y(um)
+- - GET_ADDRESS_DATA
+  - ''
+  - Data(MAX 20000char)
+- - SET_ADDRESS_CLASS
+  - Class(0 to 99)
+  - ''
+- - SET_ADDRESS_NAME
+  - Name(MAX 20char)
+  - ''
+- - SET_ADDRESS_LOCATE
+  - World X(um),World Y(um)
+  - ''
+- - SET_ADDRESS_DATA
+  - Data(MAX 20000char)
+  - ''
+- - DEL_ADDRESS
+  - ''
+  - ''
+:Edit_Attach:
+- - GET_ATTACH_COUNT
+  - ''
+  - Count(0 to 100)
+- - ADD_ATTACH_VIDEO
+  - ''
+  - Add number(0 to 99)
+- - ADD_ATTACH_FILE
+  - File path && name(MAX 260char)
+  - Add number(0 to 99)
+- - SET_SELECT_ATTACH
+  - Number(-1 or 0 to 99),Select flag(TRUE or FALSE)
+  - ''
+- - CHK_SELECT_ATTACH
+  - Number(0 to 99)
+  - Select flag(TRUE or FALSE)
+- - GET_ATTACH_CLASS
+  - Number(0 to 99)
+  - Class(0 or 1)
+- - GET_ATTACH_NAME
+  - Number(0 to 99)
+  - Name(MAX 20char)
+- - GET_ATTACH_FILE
+  - Number(0 to 99)
+  - File name(MAX 20char)
+- - GET_ATTACH_LOCATE
+  - Number(0 to 99)
+  - World X(um),World Y(um)
+- - GET_ATTACH_CENTER
+  - Number(0 to 99)
+  - X center(um),Y center(um)
+- - GET_ATTACH_SIZE
+  - Number(0 to 99)
+  - X size(um),Y size(um)
+- - GET_ATTACH_IMAG
+  - Number(0 to 99)
+  - Image magnification(1 to)
+- - SET_ATTACH_NAME
+  - Number(-1 or 0 to 99),Name(MAX 20char)
+  - ''
+- - SET_ATTACH_LOCATE
+  - Number(-1 or 0 to 99),World X(um),World Y(um)
+  - ''
+- - SET_ATTACH_CENTER
+  - Number(-1 or 0 to 99),X center(um),Y center(um)
+  - ''
+- - SET_ATTACH_SIZE
+  - Number(-1 or 0 to 99),X size(um),Y size(um)
+  - ''
+- - SET_ATTACH_IMAG
+  - Number(-1 or 0 to 99),Image magnification(1 to)
+  - ''
+- - DEL_ATTACH
+  - Number(-1 or 0 to 99)
+  - ''
+- - SET_SELECT_BG_IMAGE
+  - Number(-1 or 0 to 99)
+  - ''
+:View:
+- - CALL_CENTER_POSITION
+  - ''
+  - ''
+- - CALL_STAGE_POSITION
+  - ''
+  - ''
+- - CALL_MARKER_POSITION
+  - ''
+  - ''
+- - GET_VIEW_MAG
+  - ''
+  - View magnification(0.2 to)
+- - SET_VIEW_MAG
+  - View magnification(0.2 to)
+  - ''
+:Setup:
+- - CHG_MS_DEVICE
+  - Microscope name(MAX 20char)
+  - ''
+- - GET_MS_NAME
+  - ''
+  - Microscope name(MAX 20char)
+- - GET_MS_STAGE_PROP
+  - Axis type(X or Y)
+  - Stage range(min(um),center(um),max(um),rate(pulse/um),dir(L or R or T or B))
+- - GET_MS_IMAGE_SIZE
+  - Image magnification(1 to)
+  - X size(um),Y size(um)
+:External:
+- - ! '#EXTERNAL#'
+  - Send string
+  - ''
+:Other:
+- - TEST_CMD
+  - ''
+  - ''

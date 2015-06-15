@@ -1,5 +1,7 @@
 require "visual_stage/version"
-
-module VisualStage
-  # Your code goes here...
-end
+require 'visual_stage/vs2007api'
+require 'visual_stage/vs2007'
+require 'visual_stage/data'
+require 'visual_stage/base'
+require 'visual_stage/address'
+require 'visual_stage/attach'
