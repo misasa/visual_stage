@@ -1,6 +1,6 @@
 # VisualStage
 
-Wrapper for VS2007. This gem requires a python package vs2007.
+Wrapper for VS2007. This gem requires a python package named vs2007.
 
 ## Installation
 pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
