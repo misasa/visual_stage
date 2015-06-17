@@ -3,7 +3,7 @@
 Wrapper for VS2007
 
 ## Installation
-pip install vs2007
+pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
 Add this line to your application's Gemfile:
 
 ```ruby
