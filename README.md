@@ -3,7 +3,7 @@
 Wrapper for VS2007
 
 ## Installation
-
+pip install vs2007
 Add this line to your application's Gemfile:
 
 ```ruby
