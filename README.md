@@ -3,7 +3,9 @@
 Wrapper for VS2007. This gem requires a python package named vs2007.
 
 ## Installation
-pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
+
+    pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
+
 Add this line to your application's Gemfile:
 
 ```ruby
