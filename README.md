@@ -2,7 +2,13 @@
 
 Wrapper for python package `vs2007`. This gem requires a python package named `vs2007`.
 
-## Installation
+
+# Dependency
+
+## [vs2007](http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007/tree/master "follow instruction")
+
+
+# Installation
 
     pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
 
@@ -21,11 +27,11 @@ Or install it yourself as:
     $ gem source -a http://dream.misasa.okayama-u.ac.jp/rubygems
     $ gem install visual_stage
 
-## Usage
+# Usage
 
 TODO: Write usage instructions here
 
-## Contributing
+# Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/visual_stage/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
