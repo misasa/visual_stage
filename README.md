@@ -10,8 +10,6 @@ Wrapper for python package `vs2007`. This gem requires a python package named `v
 
 # Installation
 
-    pip install git+http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007.git
-
 Add this line to your application's Gemfile:
 
 ```ruby
