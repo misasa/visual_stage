@@ -22,7 +22,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem source -a http://dream.misasa.okayama-u.ac.jp/rubygems
+    $ gem source -a http://dream.misasa.okayama-u.ac.jp/rubygems/
     $ gem install visual_stage
 
 # Usage
