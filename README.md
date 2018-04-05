@@ -1,11 +1,11 @@
 # visual_stage
 
-Wrapper for python package `vs2007`. This gem requires a python package named `vs2007`.
+Wrapper for `python package -- vs2007`.
 
 
 # Dependency
 
-## [vs2007](http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007/tree/master "follow instruction")
+## [python package -- vs2007](http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007/tree/master "follow instruction")
 
 
 # Installation
