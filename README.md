@@ -1,11 +1,12 @@
-# visual_stage
+# gem package -- visual_stage
 
-Wrapper for `python package -- vs2007`.
+Provide Ruby API via gem that interacts with VisualStage 2007
+via `python package -- vs2007`.
 
 
 # Dependency
 
-## [python package -- vs2007](http://devel.misasa.okayama-u.ac.jp/gitlab/pythonpackage/vs2007/tree/master "follow instruction")
+## [python package -- vs2007](http://babel.misasa.okayama-u.ac.jp/pythonpackage/vs2007/tree/master "follow instruction")
 
 
 # Installation
