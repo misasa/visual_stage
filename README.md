@@ -6,7 +6,7 @@ via `python package -- vs2007`.
 
 # Dependency
 
-## [python package -- vs2007](http://babel.misasa.okayama-u.ac.jp/pythonpackage/vs2007/tree/master "follow instruction")
+## [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007/tree/master "follow instruction")
 
 
 # Installation
