@@ -1,11 +1,11 @@
 # gem package -- visual_stage
 
-Ruby API wrapper for VisualStage 2007. It provides easy-to-use functions of `python package -- vs2007` for Ruby. 
+Ruby API wrapper for VisualStage 2007. It provides easy-to-use functions of [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007) for Ruby. 
 
 
 # Dependency
 
-## [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007/tree/master "follow instruction")
+## [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007)
 
 
 # Installation
