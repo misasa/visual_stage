@@ -4,6 +4,9 @@ Ruby API wrapper for [python package -- vs2007](https://gitlab.misasa.okayama-u.
 This gem provides easy-to-use functionss and with this gem,
 Ruby can access and control `VisualStage 2007`.
 
+See [gem package -- vstool](https://gitlab.misasa.okayama-u.ac.jp/gems/vstool)
+that refers to this package.
+
 # Dependency
 
 ## [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007)
