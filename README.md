@@ -2,7 +2,7 @@
 
 Ruby API wrapper for [python package -- vs2007](https://gitlab.misasa.okayama-u.ac.jp/pythonpackage/vs2007).
 This gem provides easy-to-use functionss and with this gem,
-Ruby can access and control `VisualStage 2007`.
+Ruby can control and refer to `VisualStage 2007`.
 
 See [gem package -- vstool](https://gitlab.misasa.okayama-u.ac.jp/gems/vstool)
 that refers to this package.
@@ -24,7 +24,7 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Or install it as:
 
     $ gem source -a http://dream.misasa.okayama-u.ac.jp/rubygems/
     $ gem install visual_stage
