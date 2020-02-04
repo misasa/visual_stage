@@ -5,13 +5,34 @@ module VisualStage
 		before(:each) do
 #			Address.pool << Address.new(:name => 'hello')
 		end
+		describe "with vs", :current => true do
+			let(:pid){ VS2007.pid}
+			let(:api){ VS2007API.new({:pid => pid, :verbose => true}) }
+			before do
+				VS2007.start
+				api
+				api.test_cmd
+			end
+			context "without logging_level" do
+				it { expect(1).to eql(1)}
+			end
+			context "with logging_level INFO" do
+				let(:api){ VS2007API.new({:pid => pid, :verbose => true, :logging_level => 'INFO'}) }
+				it { expect(1).to eql(1)}
+			end
+			after(:each) do
+				VS2007.stop
+			end
+		end
 
 		describe "#cygpath" do
 			before(:each) do
 				@api = VS2007API.new(:offline => true)
+				Open3.stub(:capture3)
 			end
 
 			it "convert file_path" do
+				Open3.should_receive(:capture3).and_return(['a', 'b', 'c'])
 				path = @api.cygpath('tmp/deleteme.d/chitech@002.tif', "d")
 				path.should_not be_nil
 			end
@@ -70,7 +91,7 @@ module VisualStage
 			end
 		end
 
-		describe "#create_address", :current => true do
+		describe "#create_address" do
 			let(:param) { {:name => 'addr-1', :locate => [100.2,200.3]} }
 			before(:each) do
 				@api = VS2007API.new(:offline => true)
@@ -101,7 +122,7 @@ module VisualStage
 			end
 		end
 
-		describe "#get_attach_default_parameter", :current => true do
+		describe "#get_attach_default_parameter" do
 			let(:api){VS2007API.new(:offline => true)}
 			let(:name){'def-1'}
 			let(:imag){10.25}
@@ -114,7 +135,7 @@ module VisualStage
 			end
 		end
 
-		describe "#set_attach_default_parameter", :current => true do
+		describe "#set_attach_default_parameter" do
 			let(:api){VS2007API.new(:offline => true)}
 			let(:name){'set-1'}
 			let(:imag){10.25}
@@ -125,7 +146,7 @@ module VisualStage
 			end
 
 		end
-		describe "#size2imag", :current => true do
+		describe "#size2imag" do
 			let(:api) {VS2007API.new(:offline => true)}
 			let(:osize){[126000.000, 94500.000]}
 			let(:size) {[2400, 1800.007]}

@@ -4,7 +4,7 @@ require 'yaml'
 require 'logger'
 module VisualStage
 	class VS2007API
-		attr_accessor :handle, :data_dir, :path, :name, :python_path, :api_exe
+		attr_accessor :handle, :data_dir, :path, :name, :python_path, :api_exe, :logging_level
 
 		def initialize(opts = {})
 			@verbose = opts[:verbose] || false
@@ -15,10 +15,16 @@ module VisualStage
 			@vs_exe_path = "VS2007.exe"
 			@api_command_refs_file = File.join(File.dirname(__FILE__), '/api_command_refs.yml')
 			@@api_command_refs = YAML.load_file(@api_command_refs_file)
-			@handle = get_handle unless opts[:offline]
+			@logging_level = opts[:logging_level]
+			unless opts[:offline]
+				@pid = opts[:pid] || get_pid
+				@handle = get_handle
+			end
 			@log_dir = File.expand_path('../../../log',__FILE__)
 			@log_path = File.join(@log_dir,'/vs2007api.log')
-			@log = Logger.new(@log_path)
+			#FileUtils.mkdir_p(@log_dir) unless File.exists?(@log_dir)
+			#@log = Logger.new(@log_path)
+			@log = Logger.new(STDERR)
 		end
 
 		def randam_chars(size=7)
@@ -42,17 +48,42 @@ module VisualStage
 		end
 
 		def get_handle( cnt_retry = 0)
-			#print "getting window handle..." if @verbose
 			command = "#{@api_exe} -g"
-			#p command if @verbose
+			command += " --set_pid #{@pid}" if @pid
+			command += " --log_level #{@logging_level}" if @logging_level
+			puts command if @verbose
 			out, error, status = Open3.capture3(command)
+			puts error if @verbose
 			vals = out.chomp.split(' ')
 	      	status_text = vals.shift
 	      	raise 'invalid args' unless status_text == 'SUCCESS'
 	      	#@handle = vals[0]
-	      	handle = vals[0]
-			#print " [#{@handle}]\n" if @verbose
+			handle = vals[0]  
+			print "handle: [#{handle}]\n" if @verbose
 			return handle
+	      	rescue => ex
+	      		print "NG\n" if @verbose
+	      		#start_vs
+	      		cnt_retry += 1
+	      		retry if cnt_retry < 2
+	      		raise "ERROR: could not get window handle for VS"
+		end
+
+
+		def get_pid( cnt_retry = 0)
+			print "getting pid..." if @verbose
+			command = "#{@api_exe} --get_pid"
+			command += " --log_level=#{@logging_level}" if @logging_level
+			#p command if @verbose
+			out, error, status = Open3.capture3(command)
+			puts error if @verbose
+			vals = out.chomp.split(' ')
+	      	status_text = vals.shift
+	      	raise 'invalid args' unless status_text == 'SUCCESS'
+	      	#@handle = vals[0]
+			pid = vals[0]
+			print " [#{pid}]\n" if @verbose
+			return pid
 	      	rescue => ex
 	      		print "NG\n" if @verbose
 	      		#start_vs
@@ -329,12 +360,12 @@ module VisualStage
 	      	@handle = exec_command("#{api_exe} -g")[0]
 	    end
 
-
-
 		def api_command(command = 'TEST_CMD', args)
 	       	# line = "#{@python_path} #{@api_path}"
 	        param = ""
-	        param += "-d #{@handle} " if @handle
+			param += "-d #{@handle} " if @handle
+			param += "--set_pid #{@pid} " if @pid
+			param += "--log_level #{@logging_level} " if @logging_level			
 	        param += "\"#{command}"
 	        param += " #{args.join(',')}" unless args.empty?
 	        param += "\""
@@ -344,7 +375,7 @@ module VisualStage
 	    def get_stdout(command)
 	    	puts "#{command}..." if @verbose
 	    	@log.info(command)
-	    	out, error, status = Open3.capture3(command)
+			out, error, status = Open3.capture3(command)
 			res = out.chomp
 			@log.info(res)
 			puts "#{res}" if @verbose

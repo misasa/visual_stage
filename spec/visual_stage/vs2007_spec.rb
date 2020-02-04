@@ -9,18 +9,18 @@ module VisualStage
 		describe ".start" do
 			before(:each) do
 				@pid = 1000
-				VS2007.stub(:system).with(VS2007.exe_path + ' ' + "start")				
+				VS2007.stub(:get_stdout).with(VS2007.exe_path + ' ' + "start").and_return("SUCCESS #{@pid}")				
 				VS2007.stub(:pid).and_return(@pid)
 			end
 			it "call exe with start" do
-				VS2007.should_receive(:system).with(VS2007.exe_path + ' ' + "start")
+				VS2007.should_receive(:get_stdout).with(VS2007.exe_path + ' ' + "start")
 				VS2007.start()
 			end
 
-			it "call pid" do
-				VS2007.should_receive(:pid).at_least(1).and_return(@pid)
-				VS2007.start()
-			end
+			#it "call pid" do
+			#	VS2007.should_receive(:pid).at_least(1).and_return(@pid)
+			#	VS2007.start()
+			#end
 
 			it "returns SUCCESS PID with pid" do
 				r = VS2007.start()
@@ -28,7 +28,8 @@ module VisualStage
 			end
 
 			it "returns FAILED without pid" do
-				VS2007.stub(:pid).and_return(nil)				
+#				VS2007.stub(:pid).and_return(nil)				
+				VS2007.stub(:get_stdout).with(VS2007.exe_path + ' ' + "start").and_return("")				
 				r = VS2007.start()
 				r.should eql("FAILED")				
 			end
@@ -54,9 +55,22 @@ module VisualStage
 
 		describe ".pid" do
 			before(:each) do
+				VS2007.pid = nil
 				@pid = 1000
 			end
 
+			context "with pid" do
+				before do
+					VS2007.pid = @pid
+				end
+				it "calls status" do
+					VS2007.should_not_receive(:status)
+					VS2007.pid
+				end	
+				after do
+					VS2007.pid = nil
+				end
+			end	
 			it "calls status" do
 				VS2007.should_receive(:status).and_return("RUNNING #{@pid}")
 				VS2007.pid

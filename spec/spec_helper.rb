@@ -1,5 +1,5 @@
 require 'visual_stage'
-Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
+#Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
 
 def deleteall(delthem)
 	if FileTest.directory?(delthem) then

@@ -9,26 +9,39 @@ module VisualStage
 #		@@exe_path = File.join(File.expand_path('../../../dist',__FILE__), '/vs2007.exe')
 		@@exe_path = 'vs.exe'
 		@@verbose = false
-#		@@pid = nil
+		@@logging_level = nil
+		@@pid = nil
 
-#		def self.pid() @@pid end
+		#def self.pid() @@pid end
+		def self.pid=(pid) @@pid = pid end
 		def self.exe_path() @@exe_path end
 		def self.exe_path=(path) @@exe_path = path end
 		def self.verbose() @@verbose end
 		def self.verbose=(bool) @@verbose = bool end
-
+		def self.logging_level() @@logging_level end
+		def self.logging_level=(level) @@logging_level = level end 
 	    def self.get_stdout(command)
 	    	puts "#{command}..." if verbose
 	    	out, error, status = Open3.capture3(command)
 			res = out.chomp
-			puts "#{res}" if @verbose
+			puts error if verbose
+			#puts "#{res}" if @verbose
 			return res
 	    end
 
 		def self.start()
-			command_line = "#{exe_path} start"
-			system(command_line)
-			if pid
+			command_line = "#{exe_path}"
+			command_line += " --log_level #{logging_level}" if logging_level
+			command_line += " start"
+
+			out = get_stdout(command_line)
+			vals = out.split(' ')
+
+			status_text = vals.shift
+			if status_text == "SUCCESS"
+				pid = vals.shift.to_i
+				self.pid = pid
+				#return vals.shift.to_i
 				return "SUCCESS #{pid}"
 			else
 				return "FAILED"
@@ -46,6 +59,7 @@ module VisualStage
 		end
 
 		def self.pid()
+			return @@pid if @@pid
 	      	vals = status.split(' ')
 	      	status_text = vals.shift
 	      	if status_text == "RUNNING"
@@ -96,8 +110,5 @@ module VisualStage
 				return list
 			end
 		end
-
-
-
 	end
 end

@@ -14,11 +14,13 @@ module VisualStage
 				@dirname = "C:/VS2007data/test"
 				Base.api = double('api')
 				Base.api.stub(:open)
-				Base.stub(:data_dir=)				
+				Base.stub(:data_dir=)
+				Base.stub(:load_data)				
 			end
 
 			it "calls api.open" do
 				Base.api.should_receive(:open).with(@dirname)
+				Base.should_receive(:load_data)
 				Base.open(@dirname)
 			end
 
@@ -263,7 +265,7 @@ module VisualStage
 
 
 
-		describe "#init", :current => true do
+		describe "#init" do
 			before(:each) do
 				# Base.api = double('api')
 				# #Base.api.stub(:open).and_return(true)
