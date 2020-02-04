@@ -25,7 +25,6 @@ module VisualStage
 			#FileUtils.mkdir_p(@log_dir) unless File.exists?(@log_dir)
 			#@log = Logger.new(@log_path)
 			@log = opts[:logger] || Logger.new(STDERR)
-			p opts
 		end
 
 		def randam_chars(size=7)
