@@ -17,7 +17,7 @@ module VisualStage
 				it { expect(1).to eql(1)}
 			end
 			context "with logging_level INFO" do
-				let(:api){ VS2007API.new({:pid => pid, :verbose => true, :logging_level => 'INFO'}) }
+				let(:api){ VS2007API.new({:pid => pid,:logging_level => 'INFO', :verbose => true, :logger => Logger.new(STDERR)}) }
 				it { expect(1).to eql(1)}
 			end
 			after(:each) do

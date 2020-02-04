@@ -24,7 +24,8 @@ module VisualStage
 			@log_path = File.join(@log_dir,'/vs2007api.log')
 			#FileUtils.mkdir_p(@log_dir) unless File.exists?(@log_dir)
 			#@log = Logger.new(@log_path)
-			@log = Logger.new(STDERR)
+			@log = opts[:logger] || Logger.new(STDERR)
+			p opts
 		end
 
 		def randam_chars(size=7)
@@ -376,6 +377,7 @@ module VisualStage
 	    	puts "#{command}..." if @verbose
 	    	@log.info(command)
 			out, error, status = Open3.capture3(command)
+			puts error if @verbose
 			res = out.chomp
 			@log.info(res)
 			puts "#{res}" if @verbose

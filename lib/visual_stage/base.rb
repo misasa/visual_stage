@@ -4,6 +4,7 @@ module VisualStage
 	class Base
 		@@api = nil
 		@@verbose = false
+		@@logger = Logger.new(STDERR)
 		@@data_dir = nil
 		#@@netpath_exe_path = File.join(File.expand_path('../../../dist',__FILE__),'/netpath.exe')
 		@@last_address_dat_stat = nil
@@ -176,8 +177,9 @@ module VisualStage
 			print " [OK]\n"
 		end
 
-		def self.connect
-			self.api = VS2007API.new(:verbose => @@verbose)
+		def self.connect(opts= {})
+			opts = {:verbose => @@verbose, :logger => @@logger}.merge(opts)
+			self.api = VS2007API.new(opts)
 		rescue
 			nil
 		end

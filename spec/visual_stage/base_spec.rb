@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 module VisualStage
+	describe "with vs" do
+		describe ".connect", :current => true do
+			before do
+				VS2007.start
+			end
+			context "without opts" do
+				before do
+					Base.connect
+				end	
+				it { expect{ Base.api }.not_to be_nil }
+			end
+			context "with opts" do
+				before do
+					Base.connect(opts)
+				end	
+				let(:opts){{:verbose => true, :logger => Logger.new(STDERR)}}
+				it { expect{ Base.api }.not_to be_nil }
+			end
+			after do
+				VS2007.stop
+			end
+		end
+	end
 	describe Base do
 		before(:each) do
 #			Address.pool << Address.new(:name => 'hello')
@@ -8,7 +31,6 @@ module VisualStage
 			#Base.api = VS2007API.new(:verbose => true)
 			Base.api = double('api')
 		end
-
 		describe ".open" do
 			before(:each) do
 				@dirname = "C:/VS2007data/test"
