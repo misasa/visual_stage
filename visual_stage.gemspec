@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["yyachi@misasa.okayama-u.ac.jp"]
   spec.summary       = %q{Wrapper for vs2007}
   spec.description   = %q{This is a wrapper for vs2007.}
-  spec.homepage      = "https://gitlab.misasa.okayama-u.ac.jp/gems/visual_stage"
+  spec.homepage      = "https://github.com/misasa/visual_stage"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
